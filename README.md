@@ -1,2 +1,2 @@
 # API-AmoCRM
-API for AmoCRM
+Back-end GET request for API AmoCRM
