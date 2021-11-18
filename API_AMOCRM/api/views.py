@@ -1,5 +1,6 @@
 import requests
 import os
+from django.http import HttpResponse
 from dotenv import load_dotenv
 from django.shortcuts import render
 
@@ -97,7 +98,9 @@ def get_contact_id(data):
         id = response.get('id')
         url = f'https://{subdomain}.amocrm.ru/api/v4/contacts/{id}'
         response = requests.patch(url, data=data, headers=headers)
+        return HttpResponse(response.status_code)
     else:
         response = requests.post(url, data=data, headers=headers)
     url = f'https://{subdomain}.amocrm.ru/api/v4/leads'
     response = requests.post(url, data=data, headers=headers)
+    return HttpResponse(response.status_code)
